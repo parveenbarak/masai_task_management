@@ -165,17 +165,6 @@
       .dark .search-wrapper {
         box-shadow: none;
       }
-      #logoutbtn{
-        background-color: #FFFFFF;
-        border-radius: 30px;
-        padding: 10px;
-        border: none;
-        box-shadow: #1f1c24
-      }
-
-      #logoutbtn.active{
-        background-color: #1F2937;
-      }
       .search-input {
         border: none;
         flex: 1;
@@ -827,6 +816,7 @@ bottom: 0;
       }
     </style>
   </head>
+  
   <body>
     <div class="app-container">
       <div class="app-header">
@@ -909,7 +899,6 @@ bottom: 0;
             <img src="" />
             <span>temp</span>
           </button>
-          <button id="logoutbtn">logout</button>
         </div>
         <button class="messages-btn">
           <svg
@@ -1015,7 +1004,7 @@ bottom: 0;
             <p>Projects</p>
             <p class="time">December, 12</p>
           </div>
-          <div class="projects-section-line">
+          <!-- <div class="projects-section-line">
             <div class="projects-status">
               <div class="item-status">
                 <span class="status-number">45</span>
@@ -1072,9 +1061,9 @@ bottom: 0;
                 </svg>
               </button>
             </div>
-          </div>
+          </div> -->
           <div class="project-boxes jsGridView">
-            <div class="project-box-wrapper">
+            <!-- <div class="project-box-wrapper">
               <div class="project-box" style="background-color: #fee4cb">
                 <div class="project-box-header">
                   <span>December 10, 2020</span>
@@ -1505,10 +1494,11 @@ bottom: 0;
                   </div>
                 </div>
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
-        <div class="messages-section">
+
+        <!-- <div class="messages-section">
           <button class="messages-close">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -1679,24 +1669,15 @@ bottom: 0;
               </div>
             </div>
           </div> -->
-        </div>
+<!--           
+        </div>  -->
+
+
       </div>
     </div>
   </body>
+
   <script>
-    let logoutbtn = document.querySelector("#logoutbtn");
-    logoutbtn.addEventListener("click",()=>{
-      let temp = localStorage.getItem("loggedUser");
-      if(!temp){
-        alert("no user is logged in, redirecting !!!");
-        document.location.href="./login.html";
-      }
-      else{
-        localStorage.removeItem("loggedUser");
-        alert("logged out successfully");
-        document.location.href="../index.html";
-      }
-    });
 
     document.addEventListener("DOMContentLoaded", function () {
       var modeSwitch = document.querySelector(".mode-switch");
