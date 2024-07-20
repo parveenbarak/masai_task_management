@@ -30,18 +30,6 @@
     "home",
     "today",
     "shopping"
-  ],
-  "tasks":[
-    {
-      "id":,
-      "title":,
-      "description":,
-      "created":,
-      "collaborators":[],
-      "endDate":,
-      "priority":, //high , medium, low
-      "isComplete":, //false
-      "kanban":"todo" //todo, doing , done
-    }
   ]
+ 
 }

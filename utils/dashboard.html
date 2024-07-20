@@ -932,7 +932,7 @@ bottom: 0;
       </div>
       <div class="app-content">
         <div class="app-sidebar">
-          <a href="" class="app-sidebar-link active">
+          <a href="./dashboard.html" class="app-sidebar-link">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -949,7 +949,7 @@ bottom: 0;
               <polyline points="9 22 9 12 15 12 15 22" />
             </svg>
           </a>
-          <a href="" class="app-sidebar-link">
+          <a href="./chartView.html" class="app-sidebar-link">
             <svg
               class="link-icon"
               xmlns="http://www.w3.org/2000/svg"
@@ -969,7 +969,7 @@ bottom: 0;
               />
             </svg>
           </a>
-          <a href="" class="app-sidebar-link">
+          <a href="./calenderView.html" class="app-sidebar-link">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -1013,7 +1013,7 @@ bottom: 0;
         <div class="projects-section">
           <div class="projects-section-header">
             <p>Projects</p>
-            <p class="time">December, 12</p>
+            <p class="time" id="datetime"></p>
           </div>
           <div class="projects-section-line">
             <div class="projects-status">
@@ -1683,60 +1683,5 @@ bottom: 0;
       </div>
     </div>
   </body>
-  <script>
-    let logoutbtn = document.querySelector("#logoutbtn");
-    logoutbtn.addEventListener("click",()=>{
-      let temp = localStorage.getItem("loggedUser");
-      if(!temp){
-        alert("no user is logged in, redirecting !!!");
-        document.location.href="./login.html";
-      }
-      else{
-        localStorage.removeItem("loggedUser");
-        alert("logged out successfully");
-        document.location.href="../index.html";
-      }
-    });
-
-    document.addEventListener("DOMContentLoaded", function () {
-      var modeSwitch = document.querySelector(".mode-switch");
-      modeSwitch.addEventListener("click", function () {
-        document.documentElement.classList.toggle("dark");
-        modeSwitch.classList.toggle("active");
-      });
-      var listView = document.querySelector(".list-view");
-      var gridView = document.querySelector(".grid-view");
-      var projectsList = document.querySelector(".project-boxes");
-      listView.addEventListener("click", function () {
-        gridView.classList.remove("active");
-        listView.classList.add("active");
-        projectsList.classList.remove("jsGridView");
-        projectsList.classList.add("jsListView");
-      });
-      gridView.addEventListener("click", function () {
-        gridView.classList.add("active");
-        listView.classList.remove("active");
-        projectsList.classList.remove("jsListView");
-        projectsList.classList.add("jsGridView");
-      });
-      document
-        .querySelector(".messages-btn")
-        .addEventListener("click", function () {
-          document.querySelector(".messages-section").classList.add("show");
-        });
-      document
-        .querySelector(".messages-close")
-        .addEventListener("click", function () {
-          document.querySelector(".messages-section").classList.remove("show");
-        });
-    });
-
-    // add new task
-    let addnewtask = document.querySelector("#addnewtask");
-    addnewtask.addEventListener("click",()=>{
-      document.location.href = "../utils/addTask.html"
-    });
-
-
-  </script>
+ <script type="module" src="dashboardscript.js"></script>
 </html>
