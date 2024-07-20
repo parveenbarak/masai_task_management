@@ -1,0 +1,35 @@
+{
+  "users": [
+    {
+      "id": 4642935,
+      "username": "shashi",
+      "email": "shashi@gmail.com",
+      "password": "0000",
+      "tasks": [],
+      "notifications": []
+    },
+    {
+      "id": 3828793,
+      "username": "parveen",
+      "email": "parveen@gmail.com",
+      "password": "0000",
+      "tasks": [],
+      "notifications": []
+    },
+    {
+      "id": 8382592,
+      "username": "aarohi",
+      "email": "aarohi@gmail.com",
+      "password": "0000",
+      "tasks": [],
+      "notifications": []
+    }
+  ],
+  "TagList": [
+    "work",
+    "home",
+    "today",
+    "shopping"
+  ]
+ 
+}

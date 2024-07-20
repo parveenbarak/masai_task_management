@@ -165,17 +165,6 @@
       .dark .search-wrapper {
         box-shadow: none;
       }
-      #logoutbtn{
-        background-color: #FFFFFF;
-        border-radius: 30px;
-        padding: 10px;
-        border: none;
-        box-shadow: #1f1c24
-      }
-
-      #logoutbtn.active{
-        background-color: #1F2937;
-      }
       .search-input {
         border: none;
         flex: 1;
@@ -827,6 +816,7 @@ bottom: 0;
       }
     </style>
   </head>
+  
   <body>
     <div class="app-container">
       <div class="app-header">
@@ -909,7 +899,6 @@ bottom: 0;
             <img src="" />
             <span>temp</span>
           </button>
-          <button id="logoutbtn">logout</button>
         </div>
         <button class="messages-btn">
           <svg
@@ -932,7 +921,7 @@ bottom: 0;
       </div>
       <div class="app-content">
         <div class="app-sidebar">
-          <a href="./dashboard.html" class="app-sidebar-link">
+          <a href="" class="app-sidebar-link active">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -949,7 +938,7 @@ bottom: 0;
               <polyline points="9 22 9 12 15 12 15 22" />
             </svg>
           </a>
-          <a href="./chartView.html" class="app-sidebar-link">
+          <a href="" class="app-sidebar-link">
             <svg
               class="link-icon"
               xmlns="http://www.w3.org/2000/svg"
@@ -969,7 +958,7 @@ bottom: 0;
               />
             </svg>
           </a>
-          <a href="./calenderView.html" class="app-sidebar-link">
+          <a href="" class="app-sidebar-link">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -1013,9 +1002,9 @@ bottom: 0;
         <div class="projects-section">
           <div class="projects-section-header">
             <p>Projects</p>
-            <p class="time" id="datetime"></p>
+            <p class="time">December, 12</p>
           </div>
-          <div class="projects-section-line">
+          <!-- <div class="projects-section-line">
             <div class="projects-status">
               <div class="item-status">
                 <span class="status-number">45</span>
@@ -1072,9 +1061,9 @@ bottom: 0;
                 </svg>
               </button>
             </div>
-          </div>
+          </div> -->
           <div class="project-boxes jsGridView">
-            <div class="project-box-wrapper">
+            <!-- <div class="project-box-wrapper">
               <div class="project-box" style="background-color: #fee4cb">
                 <div class="project-box-header">
                   <span>December 10, 2020</span>
@@ -1505,10 +1494,11 @@ bottom: 0;
                   </div>
                 </div>
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
-        <div class="messages-section">
+
+        <!-- <div class="messages-section">
           <button class="messages-close">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -1679,9 +1669,55 @@ bottom: 0;
               </div>
             </div>
           </div> -->
-        </div>
+<!--           
+        </div>  -->
+
+
       </div>
     </div>
   </body>
- <script type="module" src="dashboardscript.js"></script>
+
+  <script>
+
+    document.addEventListener("DOMContentLoaded", function () {
+      var modeSwitch = document.querySelector(".mode-switch");
+      modeSwitch.addEventListener("click", function () {
+        document.documentElement.classList.toggle("dark");
+        modeSwitch.classList.toggle("active");
+      });
+      var listView = document.querySelector(".list-view");
+      var gridView = document.querySelector(".grid-view");
+      var projectsList = document.querySelector(".project-boxes");
+      listView.addEventListener("click", function () {
+        gridView.classList.remove("active");
+        listView.classList.add("active");
+        projectsList.classList.remove("jsGridView");
+        projectsList.classList.add("jsListView");
+      });
+      gridView.addEventListener("click", function () {
+        gridView.classList.add("active");
+        listView.classList.remove("active");
+        projectsList.classList.remove("jsListView");
+        projectsList.classList.add("jsGridView");
+      });
+      document
+        .querySelector(".messages-btn")
+        .addEventListener("click", function () {
+          document.querySelector(".messages-section").classList.add("show");
+        });
+      document
+        .querySelector(".messages-close")
+        .addEventListener("click", function () {
+          document.querySelector(".messages-section").classList.remove("show");
+        });
+    });
+
+    // add new task
+    let addnewtask = document.querySelector("#addnewtask");
+    addnewtask.addEventListener("click",()=>{
+      document.location.href = "../utils/addTask.html"
+    });
+
+
+  </script>
 </html>
