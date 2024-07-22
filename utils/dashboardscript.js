@@ -191,9 +191,9 @@ document.querySelector("#calendertab")
   calender();
 });
 
-document.querySelector("#calendertab")
+document.querySelector("#kanban")
 .addEventListener("click",()=>{
-  kanban();
+  window.location.href = "/utils/kanban.html"
 });
 
 

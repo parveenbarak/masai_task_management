@@ -20,7 +20,7 @@ export function calender(){
     nextMonthtt.id = "nextMonth";
     nextMonthtt.innerText = "›";
 
-    calendarheader.append(prevMonth,monthYeartt,nextMonthtt);
+    calendarheader.append(prevMonthtt,monthYeartt,nextMonthtt);
 
     let calendarbody = document.createElement("div");
     calendarbody.className = "calendar-body";
