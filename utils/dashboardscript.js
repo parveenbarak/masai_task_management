@@ -139,7 +139,7 @@ let j = localStorage.getItem("loggedUser")
                 body : JSON.stringify(obj)
             }).then((res)=>{
                 console.log(res);
-                // alert("successfully added the task");
+                alert("successfully added the task");
                 // reload the form again
                 displayhome();
             }).catch((e)=>{
