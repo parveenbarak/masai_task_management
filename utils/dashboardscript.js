@@ -1,3 +1,8 @@
+import { displaySingleTasks  } from "./displaySingleTasks.js";
+import { piechart } from "./piecart.js";
+import { calender } from "./calender.js";
+import { kanban } from "./kanban.js";
+
 let datetime = document.querySelector("#datetime");
 let outer = document.querySelector('.project-boxes');
 const month = ["January","February","March","April","May","June","July","August","September","October","November","December"];
@@ -5,6 +10,8 @@ let dtobj = new Date();
 let td = dtobj.getDate();
 let tm = month[dtobj.getMonth()];
 datetime.innerText = `${tm}, ${td}`;
+
+
 
 let logoutbtn = document.querySelector("#logoutbtn");
 logoutbtn.addEventListener("click",()=>{
@@ -41,11 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
     projectsList.classList.remove("jsListView");
     projectsList.classList.add("jsGridView");
   });
-  document
-    .querySelector(".messages-btn")
-    .addEventListener("click", function () {
-      document.querySelector(".messages-section").classList.add("show");
-    });
+
   document
     .querySelector(".messages-close")
     .addEventListener("click", function () {
@@ -100,7 +103,8 @@ let j = localStorage.getItem("loggedUser")
         let startdate = e.target[2].value;
         let enddate = e.target[3].value;
         let priorityp = e.target[4].value;
-        // let collList = e.target[5];
+        let categoryp = e.target[5].value;
+        // let collList = e.target[6];
         // collList.push(u.username);
         let d = new Date();
         let now = d.getDate();
@@ -113,8 +117,12 @@ let j = localStorage.getItem("loggedUser")
             "start_date":startdate,
             "end_date":enddate,
             "priority":priorityp,
-            // "collaborators":collList,
-            "creation_date" : now
+            "category":categoryp,
+            // "collaborators":[],
+            "creation_date" : now,
+            "username" : u.username,
+            "kanban" : "todo"
+            
 
         }
         console.log(obj);
@@ -131,8 +139,9 @@ let j = localStorage.getItem("loggedUser")
                 body : JSON.stringify(obj)
             }).then((res)=>{
                 console.log(res);
-                alert("successfully added the task");
+                // alert("successfully added the task");
                 // reload the form again
+                displayhome();
             }).catch((e)=>{
                 alert(e);
             })
@@ -151,9 +160,13 @@ async function displayhome(){
     outer.innerText="";
     let t = await fetch(`http://localhost:3000/tasks/`);
     let data = await t.json();
-    
-    console.log(data);
-    data.forEach((ele)=>{
+
+    let newd = data.filter((ele)=>{
+      return ele.username===u.username ||ele.collaborators.includes(u.username);
+    })
+
+    console.log(newd);
+    newd.forEach((ele)=>{
         displaySingleTasks(ele);
     });
   } 
@@ -163,79 +176,27 @@ async function displayhome(){
   }
 }
 
+document.querySelector("#home")
+.addEventListener("click",()=>{
+  displayhome();
+});
+
+document.querySelector("#piecharttab")
+.addEventListener("click",()=>{
+  piechart();
+});
+
+document.querySelector("#calendertab")
+.addEventListener("click",()=>{
+  calender();
+});
+
+document.querySelector("#calendertab")
+.addEventListener("click",()=>{
+  kanban();
+});
 
 
 
-function displaySingleTasks(e){
-  
-  
-
-  let projectboxwrapper = document.createElement("div");
-  projectboxwrapper.className = "project-box-wrapper";
-  //projectbox wrpper
-  let projectbox = document.createElement("div");
-  projectbox.className = "project-box";
-
-  //projectbox
-
-  let projectboxheader = document.createElement("div");
-  projectboxheader.className = "project-box-header";
-  //projectboxheader
 
 
-
-  let projectStartDateSpan = document.createElement("span");
-  projectStartDateSpan.id = "projectStartDateSpan";
-  projectStartDateSpan.innerText = `${e.start_date}`
-
-  
-
-  projectboxheader.append(projectStartDateSpan);
-  
-  let projectboxcontentheader = document.createElement("div");
-  projectboxcontentheader.className = "project-box-content-header";
-  //projectboxcontentheder
-
-  let boxcontentheader = document.createElement("p");
-  boxcontentheader.className = "box-content-header";
-  boxcontentheader.innerText=`${e.title}`;
-
-  let boxcontentsubheader = document.createElement("p");
-  boxcontentsubheader.className = "box-content-subheader";
-  boxcontentsubheader.innerText = `${e.tag}`;
-
-  projectboxcontentheader.append(boxcontentheader,boxcontentsubheader);
-
-  let boxprogresswrapper = document.createElement("div");
-  boxprogresswrapper.className = "box-progress-wrapper";
-  //boxprogresswrapper
-
-  let boxprogressheader = document.createElement("p");
-  boxprogressheader.className = "box-progress-header";
-  boxprogressheader.innerText = "Progress";
-
-  // let per = calculatepercentage(e);
-  let per = 60;
-  let boxprogressbar = document.createElement("div");
-  boxprogressbar.className = "box-progress-bar";
-
-  let boxprogress = document.createElement("span");
-  boxprogress.className  = "box-progress";
-  boxprogress.style.width = `${per}%`;
-  boxprogressbar.append(boxprogress);
-
-  
-  let boxprogresspercentage = document.createElement("p");
-  boxprogresspercentage.className = "box-progress-percentage";
-  boxprogresspercentage.innerText =`${per}%`;
-
-  boxprogresswrapper.append(boxprogressheader,boxprogressbar,boxprogresspercentage);
-  projectbox.append(projectboxheader,projectboxcontentheader,boxprogresswrapper);
-  projectboxwrapper.append(projectbox);
-  outer.append(projectboxwrapper);
-
-}
-
-function calculatepercentage(e){
-  return p;
-}
