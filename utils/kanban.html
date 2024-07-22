@@ -941,10 +941,10 @@ bottom: 0;
               <path d="M13.73 21a2 2 0 0 1-3.46 0" />
             </svg>
           </button>
-          <button class="profile-btn">
+          <!-- <button class="profile-btn">
             <img src="" />
             <span>temp</span>
-          </button>
+          </button> -->
         </div>
         <button class="messages-btn">
           <svg
@@ -967,7 +967,7 @@ bottom: 0;
       </div>
       <div class="app-content">
         <div class="app-sidebar">
-          <a href="" class="app-sidebar-link">
+          <a  class="app-sidebar-link" id="home">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -984,7 +984,7 @@ bottom: 0;
               <polyline points="9 22 9 12 15 12 15 22" />
             </svg>
           </a>
-          <a href="" class="app-sidebar-link">
+          <a  class="app-sidebar-link" id="piecharttab">
             <svg
               class="link-icon"
               xmlns="http://www.w3.org/2000/svg"
@@ -1004,7 +1004,7 @@ bottom: 0;
               />
             </svg>
           </a>
-          <a href="" class="app-sidebar-link">
+          <a  class="app-sidebar-link" id="calendertab">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -1023,7 +1023,7 @@ bottom: 0;
               <line x1="3" y1="10" x2="21" y2="10" />
             </svg>
           </a>
-          <a href="" class="app-sidebar-link">
+          <a  class="app-sidebar-link" id="kanban">
             <svg
               class="link-icon"
               xmlns="http://www.w3.org/2000/svg"
@@ -1176,7 +1176,15 @@ bottom: 0;
         .addEventListener("click", function () {
           document.querySelector(".messages-section").classList.remove("show");
         });
+
+        
     });
+
+    let notificationbtn = document.querySelector(".notification-btn");
+notificationbtn.addEventListener("click",()=>{
+  alert("no notification");
+});
+
 
     const tasks = document.querySelectorAll('.kanban-task');
     const columns = document.querySelectorAll('.kanban-tasks');
@@ -1212,6 +1220,27 @@ bottom: 0;
         const draggable = document.getElementById(id);
         e.target.closest('.kanban-tasks').appendChild(draggable);
     }
+
+    
+document.querySelector("#home")
+.addEventListener("click",()=>{
+  document.location.href = "/utils/dashboard.html";
+});
+
+document.querySelector("#piecharttab")
+.addEventListener("click",()=>{
+  piechart();
+});
+
+document.querySelector("#calendertab")
+.addEventListener("click",()=>{
+  document.location.href = "/utils/calenderNoUI.html";
+});
+
+document.querySelector("#kanban")
+.addEventListener("click",()=>{
+  window.location.href = "/utils/kanban.html"
+});
 
 
   </script>

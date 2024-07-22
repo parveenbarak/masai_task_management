@@ -87,7 +87,7 @@ window.addEventListener('click', function(event) {
 //add new task data to new server
 
 
-let postsurl = "http://localhost:3000/tasks"
+let postsurl = "https://json-server-template-f7rf.onrender.com/tasks"
 let j = localStorage.getItem("loggedUser")
 
     let u = JSON.parse(j);
@@ -126,14 +126,14 @@ let j = localStorage.getItem("loggedUser")
 
         }
         console.log(obj);
-
         handlelogin(obj);
-
+        totalTasks();
+        
     })
     
 
     async function handlelogin(obj){
-        fetch(postsurl,{
+        await fetch(postsurl,{
                 method: "POST",
                 headers:{"Content-type":"application/json" },
                 body : JSON.stringify(obj)
@@ -158,7 +158,7 @@ displayhome();
 async function displayhome(){
   try {
     outer.innerText="";
-    let t = await fetch(`http://localhost:3000/tasks/`);
+    let t = await fetch(`https://json-server-template-f7rf.onrender.com/tasks/`);
     let data = await t.json();
 
     let newd = data.filter((ele)=>{
@@ -176,6 +176,32 @@ async function displayhome(){
   }
 }
 
+totalTasks();
+
+async function totalTasks(){
+    let t = await fetch(`https://json-server-template-f7rf.onrender.com/tasks/`);
+    let data = await t.json();
+    length = data.length;
+    document.querySelector("#alltasks").innerText = `${length}`;
+
+    let now = new Date().getDate;
+    let progresslength=0;
+    let upcominglength = 0;
+    data.forEach((ele)=>{
+      if(now<=ele.start_date){
+        upcominglength++;
+      }
+      else if(now<=ele.end_date && now>=ele.start_date){
+        progresslength++;
+      }
+
+    })
+    document.querySelector("#progressid").innerText = `${progresslength}`;
+    document.querySelector("#Upcomingid").innerText = `${upcominglength}`;
+}
+
+
+
 document.querySelector("#home")
 .addEventListener("click",()=>{
   displayhome();
@@ -188,7 +214,7 @@ document.querySelector("#piecharttab")
 
 document.querySelector("#calendertab")
 .addEventListener("click",()=>{
-  calender();
+  document.location.href = "/utils/calenderNoUI.html";
 });
 
 document.querySelector("#kanban")
@@ -196,7 +222,64 @@ document.querySelector("#kanban")
   window.location.href = "/utils/kanban.html"
 });
 
+let notificationbtn = document.querySelector(".notification-btn");
+notificationbtn.addEventListener("click",()=>{
+  alert("no notification");
+});
 
 
 
+let time = 30; // initial time in minutes
+let timerInterval;
 
+const decreaseTimeButton = document.getElementById('decrease-time');
+const increaseTimeButton = document.getElementById('increase-time');
+const startTimerButton = document.getElementById('start-timer');
+const stopTimerButton = document.getElementById('stop-timer');
+const timeDisplay = document.getElementById('time-display');
+
+
+decreaseTimeButton.addEventListener('click', () => {
+    if (time > 1) {
+        time -= 1;
+        updateTimeDisplay();
+    }
+});
+
+increaseTimeButton.addEventListener('click', () => {
+    time += 1;
+    updateTimeDisplay();
+});
+
+startTimerButton.addEventListener('click', () => {
+    startTimer();
+});
+
+stopTimerButton.addEventListener('click', () => {
+    stopTimer();
+});
+
+function updateTimeDisplay() {
+    timeDisplay.textContent = `${time} mins`;
+}
+
+function startTimer() {
+    const endTime = Date.now() + time * 60 * 1000;
+    timerInterval = setInterval(() => {
+        const remainingTime = endTime - Date.now();
+        if (remainingTime <= 0) {
+            clearInterval(timerInterval);
+            timeDisplay.textContent = 'Time is up!';
+        } else {
+            const minutes = Math.floor(remainingTime / (60 * 1000));
+            const seconds = Math.floor((remainingTime % (60 * 1000)) / 1000);
+            timeDisplay.textContent = `${minutes} mins ${seconds < 10 ? '0' : ''}${seconds} secs`;
+        }
+    }, 1000);
+}
+
+function stopTimer() {
+    clearInterval(timerInterval);
+    timeDisplay.textContent = `0 mins : 0 secs`;
+
+}

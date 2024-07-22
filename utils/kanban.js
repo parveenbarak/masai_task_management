@@ -86,7 +86,7 @@ export function kanban(){
         e.target.closest('.kanban-tasks').appendChild(draggable);
     }
 
-
+    
 
     
 }
