@@ -1,0 +1,73 @@
+{
+  "users": [
+    {
+      "id": 4642935,
+      "username": "shashi",
+      "email": "shashi@gmail.com",
+      "password": "0000",
+      "tasks": [],
+      "notifications": []
+    },
+    {
+      "id": 3828793,
+      "username": "parveen",
+      "email": "parveen@gmail.com",
+      "password": "0000",
+      "tasks": [],
+      "notifications": []
+    },
+    {
+      "id": 8382592,
+      "username": "aarohi",
+      "email": "aarohi@gmail.com",
+      "password": "0000",
+      "tasks": [],
+      "notifications": []
+    }
+  ],
+  "TagList": [
+    "work",
+    "home",
+    "today",
+    "shopping",
+    "general"
+  ],
+  "tasks": [
+    {
+      "id": 1229186,
+      "title": "hi",
+      "description": "1st",
+      "start_date": "2024-07-15",
+      "end_date": "2024-07-16",
+      "priority": "medium",
+      "category": "home",
+      "creation_date": 21,
+      "username": "shashi",
+      "kanban": "to-do"
+    },
+    {
+      "id": 2083746,
+      "title": "no",
+      "description": "this is good",
+      "start_date": "2024-07-19",
+      "end_date": "2024-07-25",
+      "priority": "high",
+      "category": "high",
+      "creation_date": 22,
+      "username": "shashi",
+      "kanban": "todo"
+    },
+    {
+      "id": 3726645,
+      "title": "hey",
+      "description": "wassup",
+      "start_date": "2024-07-16",
+      "end_date": "2024-07-26",
+      "priority": "low",
+      "category": "high",
+      "creation_date": 22,
+      "username": "shashi",
+      "kanban": "todo"
+    }
+  ]
+}

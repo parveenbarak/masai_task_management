@@ -1,0 +1,11 @@
+{
+  "name": "masai_task_management",
+  "version": "1.0.0",
+  "description": "We have used issues for task-tracking, labelling, and prioritizing, literally, the work, so a Projects board works as we manage our workflow. Please apply the issue numbers you have to other pull requests that refer back to it and watch the milestones to guide steady progress with updates around effective communication and collaboration.",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
