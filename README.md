@@ -21,8 +21,6 @@ Full-Stack Web Application
 Here's a brief overview of the technologies used in the project:
 
 - **Frontend:** HTML, CSS, Bootstrap, JavaScript
-- **State Management / UI:** (Add if you used React, Redux, Chakra UI, etc.)
-- **Backend:** (Add if any, e.g., Node.js, Express, MongoDB)
 - **Tools & Utilities:** Git, VS Code, npm
 
 ---
